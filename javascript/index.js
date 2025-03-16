@@ -2,13 +2,15 @@ navBar = document.getElementById('nav-bar');
 document.getElementById('nav-bar').classList.add('hidden');
 document.getElementById('FAQ').classList.add('hidden');
 
-
+// Logout Btn functions
 document.getElementById('logout-btn').addEventListener('click',function(){
     document.getElementById('banner').classList.remove('hidden');
     document.getElementById('nav-bar').classList.add('hidden');
     document.getElementById('FAQ').classList.add('hidden');
     document.getElementById('vocabulary').classList.add('hidden');
     document.getElementById('idle-div').classList.add('hidden');
+    document.getElementById('words-container').classList.add('hidden');
+
 
 
 })
@@ -38,6 +40,7 @@ getStartedBtn = document.getElementById('get-started-btn')
             document.getElementById('vocabulary').classList.remove('hidden');
             document.getElementById('idle-div').classList.remove('hidden');
             document.getElementById('word-container').classList.remove('hidden');
+            document.getElementById('words-container').classList.remove('hidden');
             document.getElementById('FAQ').classList.remove('hidden');
 
         }
@@ -78,8 +81,10 @@ function loadLevels(){
     .then((response) =>response.json())
     .then((data)=>showLevels(data.data))
 
+
     
 }
+
 
 // Loading Modal Details
 function loadCardDetails(cardID){
@@ -110,7 +115,7 @@ function displayModalDetails(modalData){
         modalData.meaning='অর্থ খুঁজে পাওয়া যায়নি'
     }
 
-    for(let i=1; i< modalData.synonyms.length;i++){
+    for(let i=0; i< modalData.synonyms.length;i++){
         div=document.createElement('div');
         div.innerHTML=`<p class="px-2 py-1 text-center mx-2 bg-[#D7E4EF] rounded ">${modalData.synonyms[i]}</p>`
         synContainer.append(div);
